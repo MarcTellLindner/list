@@ -18,9 +18,7 @@ public class ShoppingList {
 
     private String name;
 
-    @OneToMany(mappedBy = "list", cascade = ALL)
+    @OneToMany(cascade = ALL)
+    @JoinColumn(name = "list_id")
     private Collection<ShoppingItem> items;
-
-    @OneToMany(mappedBy = "list", cascade = ALL)
-    private Collection<ShoppingCategory> categories;
 }

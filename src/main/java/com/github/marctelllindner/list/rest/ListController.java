@@ -8,10 +8,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.HttpStatusCodeException;
 
 import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
-import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -22,8 +20,8 @@ public class ListController {
     private final ListService listService;
 
     @GetMapping("/id/{id}")
-    public ShoppingList getList(@PathVariable final long id) throws HttpStatusCodeException, ErrorCodeException {
-        return listService.getList(id).orElseThrow(() -> new ErrorCodeException(NOT_FOUND, "No list with this id"));
+    public ShoppingList getList(@PathVariable final long id) throws ErrorCodeException {
+        return listService.getList(id);
     }
 
     @PostMapping("/name/{name}")
@@ -31,9 +29,9 @@ public class ListController {
         return listService.createList(name);
     }
 
-    @PutMapping("/id/{id}")
-    public ShoppingList addItem(@PathVariable final long id, @RequestBody final ShoppingItem item) {
-        return null;
+    @PostMapping("/id/{id}")
+    public ShoppingList addItem(@PathVariable final long id, @RequestBody final ShoppingItem item) throws ErrorCodeException {
+        return listService.addItem(id, item);
     }
 
     @ExceptionHandler(ErrorCodeException.class)

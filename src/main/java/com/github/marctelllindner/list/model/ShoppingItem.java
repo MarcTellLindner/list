@@ -15,11 +15,18 @@ public class ShoppingItem {
 
     private String name;
 
-    @ManyToOne
-//    @JoinColumn(name = "id", nullable = false)
-    private ShoppingList list;
+//    @ManyToOne
+//    private ShoppingList list;
 
-    @ManyToOne
-//    @JoinColumn(name = "id", nullable = false)
-    private ShoppingCategory category;
+    @Embedded
+    private Quantity quantity;
+
+    @Data
+    @Embeddable
+    public static class Quantity {
+        private int amount;
+        private String unit;
+    }
+
+    private String category;
 }

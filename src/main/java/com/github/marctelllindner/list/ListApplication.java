@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
-@ComponentScan("com.github.marctelllindner.list.rest")
+@ComponentScan("com.github.marctelllindner.list")
 @EnableWebMvc
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class })
 public class ListApplication {

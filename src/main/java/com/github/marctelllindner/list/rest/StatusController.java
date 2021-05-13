@@ -5,17 +5,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/test")
-public class Test {
+@RequestMapping("/status")
+public class StatusController {
 
-    @GetMapping("/ok")
+    @GetMapping
     public String getOk() {
         return "ok";
-    }
-
-    @GetMapping("/fine")
-    public String getFine() {
-        return "fine";
     }
 
 }

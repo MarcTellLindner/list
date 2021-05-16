@@ -1,4 +1,4 @@
-package com.github.marctelllindner.list.model;
+package com.github.marctelllindner.list.model.entities;
 
 import lombok.Data;
 
@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table
-public class ShoppingItem {
+public class ItemEntity {
 
     @Id
     @GeneratedValue
@@ -15,8 +15,7 @@ public class ShoppingItem {
 
     private String name;
 
-//    @ManyToOne
-//    private ShoppingList list;
+    private boolean active;
 
     @Embedded
     private Quantity quantity;
@@ -24,9 +23,7 @@ public class ShoppingItem {
     @Data
     @Embeddable
     public static class Quantity {
-        private int amount;
+        private double amount;
         private String unit;
     }
-
-    private String category;
 }
